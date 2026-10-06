@@ -37,4 +37,17 @@ public class AuthController {
 
         return ResponseEntity.status(401).body("Credenciales incorrectas");
     }
+    @PostMapping("/registro")
+    public ResponseEntity<?> registrar(@RequestBody Usuario nuevoUsuario) {
+    // 1. Verificamos si el correo ya existe en la base de datos
+    if (usuarioRepository.findByCorreo(nuevoUsuario.getCorreo()).isPresent()) {
+        return ResponseEntity.badRequest().body("Error: El correo ya está registrado");
+    }
+    
+    // 2. Si no existe, lo guardamos en PostgreSQL
+    Usuario guardado = usuarioRepository.save(nuevoUsuario);
+    
+    // 3. Devolvemos un mensaje de éxito
+    return ResponseEntity.ok("Usuario registrado exitosamente con ID: " + guardado.getId());
+}
 }
