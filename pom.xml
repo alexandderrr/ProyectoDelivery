@@ -11,7 +11,7 @@
 	<groupId>data</groupId>
 	<artifactId>dfast</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>dfast</name>
+	<name>D_Fast</name>
 	<description/>
 	<url/>
 	<licenses>
@@ -67,3 +67,4 @@
 	</build>
 
 </project>
+<!-- lookup parent from repository -->
